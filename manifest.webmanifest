@@ -1,20 +1,46 @@
 {
     "name": "Gestion bar & snack",
     "short_name": "GESBAR",
-	"description": "Application de gestion des ventes et du stock de boissons pour bar, snack, restaurant",
+	"description": "Application de gestion des ventes et du stock de boissons pour bar, snack, buvette et restaurant",
 	"lang": "fr",
+	"dir": "ltr",
     "theme_color": "#000000",
     "background_color": "#ffffff",
     "display": "fullscreen",
-    "scope": "/gestion_bar_snack/",
-    "id": "/gestion_bar_snack",
+	"orientation": "portrait",
+    "scope": "/",
+    "id": "/vente-bar-snack",
     "start_url": "https://devevh.github.io/gestion_bar_snack/index.htm",
     "icons": [
-		{"src": "images/logo.png",
-		"sizes": "300x299",
-		"type": "image/png"},
-		{"src": "images/favicon-256x256.png",
-		"sizes": "256x256",
-		"type": "image/png"}
-			]
+		{
+			"src": "images/logo.png",
+			"sizes": "300x299",
+			"type": "image/png"
+		},
+		{
+			"src": "images/favicon-256x256.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		}
+		],
+	"prefer_related_applications": "false",
+	"categories": ["business","food"],
+	"display_override": ["fullscreen","standalone","browser"],
+	"screenshots" :[
+		  {
+			"src": "screenshot1.webp",
+			"sizes": "1280x720",
+			"type": "image/webp",
+			"platform": "wide",
+			"label": "Homescreen of Awesome App"
+		  },
+		  {
+			"src": "screenshot2.webp",
+			"sizes": "720x1280",
+			"type": "image/webp",
+			"platform": "narrow",
+			"label": "List of Awesome Resources available in Awesome App"
+		  }
+		],
 }
+
