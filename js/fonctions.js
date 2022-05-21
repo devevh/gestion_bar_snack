@@ -52,8 +52,7 @@ function readValue() {
 		}
 		tableau +="</table>";
 		demo.innerHTML += tableau;
-	}
-}
+	}}
 
 function majPage() {
 //met à jour les valeurs stock affichées sous chaque produit au chargement de la page
@@ -147,6 +146,7 @@ function vendre(truc) {
 
 function maj(truc) {
 	//met à jour le stock, le prix unitaire et remet à 0 le nombre de vente
+	var x, PId, SId;
 	// récupérer le prix saisi
 	var prix = document.getElementById("prix"+truc).value;
 	// récupérer le stock saisi
@@ -155,6 +155,23 @@ function maj(truc) {
 	var article = {"stock":stock,"vente":0,"prix":prix};
 	var articleJSON = JSON.stringify(article);
 	if ((stock > 0) && (prix > 0)) localStorage.setItem(truc, articleJSON);
+	//identifier l'article
+	PId="reel"+truc+"prix";
+	SId="reel"+truc+"stock";
+	//mettre à jour l'affichage
+	if (document.getElementById(PId)) document.getElementById(PId).innerHTML = article.prix+" xaf";
+	if (document.getElementById(SId)) document.getElementById(SId).innerHTML = article.stock;
+	//si le stock devient nul alors on rend l'article indisponible
+	x = document.getElementById("div"+truc);
+	if (x != null) {
+		if (article.stock == 0) {
+			x.className +=" w3-disabled";
+		}
+		else {
+			if (x.className.indexOf(" w3-disabled") > -1) x.className = x.className.replace(" w3-disabled", "");
+		}
+	}
+	//mettre à jour le tableau de suivi du stock et des ventes
 	readValue();
 }
 
