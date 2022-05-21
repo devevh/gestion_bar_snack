@@ -1,20 +1,20 @@
 //variabilisation
 var nomCache='gesbar-v1';
 var contenuCache=[
- 'index.htm'
-,'/js/app.js'
-,'/js/sw.js'
-,'/js/fonctions.js'
-,'/css/w3.css'
-,'/css/w3color.css'
-,'/images/logo.png'
-,'/images/favicon.ico'
-,'/images/coca-90x300.png'
-,'/images/orangina-90x300.png'
-,'/images/djino-front.png'
-,'/images/sprite-90x300.png'
-,'/images/beaufort-79x300.png'
-,'/images/REGAB-90x300.png'
+ '/gestion_bar_snack/index.htm'
+,'/gestion_bar_snack/js/app.js'
+,'/gestion_bar_snack/js/sw.js'
+,'/gestion_bar_snack/js/fonctions.js'
+,'/gestion_bar_snack/css/w3.css'
+,'/gestion_bar_snack/css/w3color.css'
+,'/gestion_bar_snack/images/logo.png'
+,'/gestion_bar_snack/images/favicon.ico'
+,'/gestion_bar_snack/images/coca-90x300.png'
+,'/gestion_bar_snack/images/orangina-90x300.png'
+,'/gestion_bar_snack/images/djino-front.png'
+,'/gestion_bar_snack/images/sprite-90x300.png'
+,'/gestion_bar_snack/images/beaufort-79x300.png'
+,'/gestion_bar_snack/images/REGAB-90x300.png'
 ];
 //
 //installation
