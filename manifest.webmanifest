@@ -10,7 +10,7 @@
 	"orientation": "portrait",
     "scope": "/",
     "id": "/gestion_bar_snack",
-    "start_url": "https://devevh.github.io/gestion_bar_snack/index.htm",
+    "start_url": "/gestion_bar_snack/index.htm",
     "icons": [
 		{
 			"src": "images/logo.png",
@@ -18,10 +18,21 @@
 			"type": "image/png"
 		},
 		{
+			"src": "images/logo192blanc.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "images/logo512blanc.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
 			"src": "images/favicon-256x256.png",
 			"sizes": "256x256",
 			"type": "image/png"
 		}
-		]
+		],
+	"prefer_related_applications": false
 }
 
