@@ -33,7 +33,7 @@ function initInventaire() {
 		}
 	}
 	readValue();
-	//recharge();
+	recharge();
 }
 
 function readValue() {
