@@ -6,7 +6,7 @@
     "theme_color": "#000000",
     "background_color": "#ffffff",
     "display": "fullscreen",
-    "scope": ".",
+    "scope": "/gestion_bar_snack/",
     "id": "/gestion_bar_snack",
     "start_url": "https://devevh.github.io/gestion_bar_snack/index.htm",
     "icons": [
