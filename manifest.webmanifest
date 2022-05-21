@@ -7,7 +7,7 @@
     "background_color": "#ffffff",
     "display": "fullscreen",
     "scope": ".",
-    "id": ".",
+    "id": "/gestion_bar_snack",
     "start_url": "https://devevh.github.io/gestion_bar_snack/index.htm",
     "icons": [
 		{"src": "images/logo.png",
