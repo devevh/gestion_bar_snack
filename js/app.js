@@ -16,3 +16,6 @@ if ('serviceWorker' in navigator) {
     console.log('Registration failed with ' + error);
   });
 }
+else {
+	console.log('le navigateur ne supporte pas le serviceWorker');
+}
