@@ -32,7 +32,8 @@ function initInventaire() {
 			localStorage.setItem(article, init);
 		}
 	}
-	recharge();
+	readValue();
+	//recharge();
 }
 
 function readValue() {
@@ -104,6 +105,7 @@ function majPage() {
 				}
 			}
 		}
+		readValue();
 	}
 }
 
@@ -174,7 +176,6 @@ function maj(truc) {
 	//mettre à jour le tableau de suivi du stock et des ventes
 	readValue();
 }
-
 
 // Accordion 
 function afficherSousMenu(quellediv) {
