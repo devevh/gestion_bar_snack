@@ -15,6 +15,9 @@ var contenuCache=[
 ,'/gestion_bar_snack/images/sprite-90x300.png'
 ,'/gestion_bar_snack/images/beaufort-79x300.png'
 ,'/gestion_bar_snack/images/REGAB-90x300.png'
+,'/gestion_bar_snack/images/33export-90x300.png'
+,'/gestion_bar_snack/images/castelbeer-90x300.png'
+,'/gestion_bar_snack/images/1664-90x300.png'
 ];
 //
 //installation
