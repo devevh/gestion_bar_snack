@@ -1,7 +1,10 @@
 /**************************************************************************************/
 //constantes
 /**************************************************************************************/
-const catalogue = ['coca','orangina','sprite','djino','regab','beaufort','33export','castelbeer','1664'];
+const sodas=['coca','orangina','sprite','djino','vinocola'];
+const bieres=['regab','beaufort','33export','castelbeer','1664','heineken','corona'];
+const catalogue = [sodas,bieres];
+const init = '{"stock":0,"vente":0,"prix":0}';
 
 /**************************************************************************************/
 //fonctions appelées
@@ -17,26 +20,104 @@ function recharge() {
 function enleverClasseVente(truc) {
 	if (truc.className.indexOf(" vente") > 0) truc.className = truc.className.replace(" vente", "");
 }
-
 /**************************************************************************************/
 //fonctions opérationnelles
 /**************************************************************************************/
-function initInventaire() {
-// remise à zero du stock et des ventes
-	let init = '{"stock":0,"vente":0,"prix":0}';
-	let reponse=confirm("Voulez-vous tout remettre à zéro ?");
-	var article;
-	if (reponse) {
-	//si confirmer alors pour chaque article du catalogue le stockage local est remis à 0
-		for (article of catalogue) {
+function construirePage() {
+	var divCatgSodas=document.getElementById("sodas");
+	var divCatgBieres=document.getElementById("bieres");
+	var divStock=document.getElementById("stock");
+	var divBoissonCatg="";
+	var divBoissonStock="<button onclick='afficherSousMenu(this.name)' name='stock' class='w3-green w3-block w3-button'>Gérer le stock</button>\n";
+	//
+	let stockReels = document.getElementsByClassName("reel stock");
+	let prixReels = document.getElementsByClassName("reel prix");
+	let divId, PId, SId;
+	var truc, texte, obj;
+	var stockage;
+	//
+	//
+	//construire la page en fonction du catalogue
+	divCatgSodas.innerHTML="";
+	divCatgBieres.innerHTML="";
+	divStock.innerHTML = "";
+	//
+	for (article of sodas) {
+		//chercher l'article dans le stockage local
+		texte = localStorage.getItem(article);
+		//si trouvé alors on recupère ses valeurs
+		if (texte != null) {
+			obj = JSON.parse(texte);
+		}
+		//sinon on initialise le stockage local
+		else {
+			obj=JSON.parse(init);
 			localStorage.setItem(article, init);
 		}
+		divBoissonCatg+="<div class='w3-col s3' id='div"+article+"'>\n<a onclick='vendre(this.name)' name='"+article+"' href='javascript:void(0);' title='"+article+"'><img class='w3-margin' id='img"+article+"' height='100px' src='./images/"+article+".png' alt='"+article+"'></a><br>\n<span class='reel stock' id='reel"+article+"stock'>"+obj.stock+"</span><br>\n<span class='reel prix' id='reel"+article+"prix'>"+obj.prix+"</span></div>\n";
+		divBoissonStock+="<div class='w3-row w3-center w3-border'><div class='w3-col s3' ><a onclick='maj(this.name)' name='"+article+"' href='javascript:void(0);' title='"+article+"'><img class='w3-margin' height='100px' src='./images/"+article+".png' alt='"+article+"'></a></div><div class='w3-col s9'><label for='prix"+article+"'>prix unitaire</label><input class='w3-input' type='number' id='prix"+article+"' maxlength='4' size='4'><label for='stock"+article+"'>stock</label><input class='w3-input' type='number' id='stock"+article+"' maxlength='4' size='4'></div></div>\n";
 	}
+	divCatgSodas.innerHTML=divBoissonCatg;
+	//
+	divBoissonCatg="";
+	for (article of bieres) {
+		//chercher l'article dans le stockage local
+		texte = localStorage.getItem(article);
+		//si trouvé alors on recupère ses valeurs
+		if (texte != null) {
+			obj = JSON.parse(texte);
+		}
+		//sinon on initialise le stockage local
+		else {
+			obj=JSON.parse(init);
+			localStorage.setItem(article, init);
+		}
+		divBoissonCatg+="<div class='w3-col s3' id='div"+article+"'>\n<a onclick='vendre(this.name)' name='"+article+"' href='javascript:void(0);' title='"+article+"'><img class='w3-margin' id='img"+article+"' height='100px' src='./images/"+article+".png' alt='"+article+"'></a><br>\n<span class='reel stock' id='reel"+article+"stock'>"+obj.stock+"</span><br>\n<span class='reel prix' id='reel"+article+"prix'>"+obj.prix+"</span></div>\n";
+		divBoissonStock+="<div class='w3-row w3-center w3-border'><div class='w3-col s3' ><a onclick='maj(this.name)' name='"+article+"' href='javascript:void(0);' title='"+article+"'><img class='w3-margin' height='100px' src='./images/"+article+".png' alt='"+article+"'></a></div><div class='w3-col s9'><label for='prix"+article+"'>prix unitaire</label><input class='w3-input' type='number' id='prix"+article+"' maxlength='4' size='4'><label for='stock"+article+"'>stock</label><input class='w3-input' type='number' id='stock"+article+"' maxlength='4' size='4'></div></div>\n";
+	}
+	divCatgBieres.innerHTML=divBoissonCatg;
+	//
+	divStock.innerHTML = divBoissonStock;
+	//
+	//gestion de l'affichage
+	for (i = 0; i < localStorage.length; i++) {
+		truc = localStorage.key(i);
+		texte = localStorage.getItem(truc);
+		obj = JSON.parse(texte);
+		//identifier l'article
+		PId="reel"+truc+"prix";
+		SId="reel"+truc+"stock";
+		//mettre à jour l'affichage
+		if (document.getElementById(PId)) document.getElementById(PId).innerHTML = obj.prix+" xaf";
+		if (document.getElementById(SId)) document.getElementById(SId).innerHTML = obj.stock;
+		//si le stock devient nul alors on rend l'article indisponible
+		x = document.getElementById("div"+truc);
+		if (x != null) {
+			if (obj.stock == 0) {
+				x.className +=" w3-disabled";
+			}
+			else {
+				if (x.className.indexOf(" w3-disabled") > -1) x.className = x.className.replace(" w3-disabled", "");
+			}
+		}
+	}
+	//alimentation du tableau
 	readValue();
+}
+
+function initInventaire() {
+// remise à zero du stock et des ventes
+	let reponse=confirm("Voulez-vous tout remettre à zéro ?");
+	var article="";
+	if (reponse) {
+	//si confirmé alors on efface tout et on recharge la page qui sera reconstruite
+		localStorage.clear();
+	}
 	recharge();
 }
 
 function readValue() {
+	//mise à jour du tableau des ventes
 	var demo = document.getElementById("demo");
 	var tableau, truc, texte, obj;
 	demo.innerHTML = "";
@@ -54,60 +135,6 @@ function readValue() {
 		tableau +="</table>";
 		demo.innerHTML += tableau;
 	}}
-
-function majPage() {
-//met à jour les valeurs stock affichées sous chaque produit au chargement de la page
-//
-//si aucun inventaire enregistré 
-//alors on met tout à 0
-//sinon pour chaque article de l'inventaire on met à jour les zones stock et prix
-//		si le stock est à 0 
-//		alors l'article est indisponible
-//
-//si un article n'est pas dans l'inventaire il n'est pas affiché
-
-	let stockReels = document.getElementsByClassName("reel stock");
-	let prixReels = document.getElementsByClassName("reel prix");
-	let divId, PId, SId;
-	var truc, texte, obj;
-	
-	if (localStorage.length == 0) {
-	//aucun stock, on met tout à 0
-		for (stockReel of stockReels) { 
-			stockReel.innerHTML = 0;
-			//transformer reeloranginastock en divorangina => 
-			divId = stockReel.id.replace("reel","div");
-			divId = divId.replace("stock","");
-			document.getElementById(divId).className +=" w3-disabled";
-		};
-		for (prixReel of prixReels) { prixReel.innerHTML = "0 xaf"};
-	}
-	else {
-	//stock existe, on cherche les valeurs de chaque article
-		for (i = 0; i < localStorage.length; i++) {
-			truc = localStorage.key(i);
-			texte = localStorage.getItem(truc);
-			obj = JSON.parse(texte);
-			//identifier l'article
-			PId="reel"+truc+"prix";
-			SId="reel"+truc+"stock";
-			//mettre à jour l'affichage
-			if (document.getElementById(PId)) document.getElementById(PId).innerHTML = obj.prix+" xaf";
-			if (document.getElementById(SId)) document.getElementById(SId).innerHTML = obj.stock;
-			//si le stock devient nul alors on rend l'article indisponible
-			x = document.getElementById("div"+truc);
-			if (x != null) {
-				if (obj.stock == 0) {
-					x.className +=" w3-disabled";
-				}
-				else {
-					if (x.className.indexOf(" w3-disabled") > -1) x.className = x.className.replace(" w3-disabled", "");
-				}
-			}
-		}
-		readValue();
-	}
-}
 
 function vendre(truc) {
 //met à jour le stock et la vente de l'article
