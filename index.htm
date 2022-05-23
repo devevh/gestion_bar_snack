@@ -11,9 +11,9 @@
 	<!-- fonctions spécifiques -->
 	<script src="./js/fonctions.js"></script>
 </head>
-<body class="w3-content w3-center watermark" style="max-width:1200px" onload="construirePage()">
+<body class="w3-content w3-center " style="max-width:1200px" onload="construirePage()">
   <!-- Top menu on small screens -->
-<header class="w3-top w3-hide-large watermark w3-xlarge ">
+<header class="w3-top w3-hide-large w3-xlarge ">
   <div class="w3-padding-24 w3-wide">Gestion de boissons<br>pour bar & snack</div>
 </header>
 
@@ -24,7 +24,6 @@
 
 <!-- Tuiles categories d'article -->
 <div class="w3-container " style="padding:16px" id="categories">
-<!--<i id='affichePosition' class="w3-margin-top"></i>-->
 	<div class="w3-row w3-center">
 		<p class="w3-large"><b>SODAS</b></p>
 		<div class="w3-col w3-border" id="sodas">
@@ -54,25 +53,8 @@
 <button onclick="initInventaire()" class="w3-red w3-block w3-button">/!\ Supprimer le stock et les ventes /!\</button>
 <!-- Fin Remise à zéro -->
 
-
 <!-- pwa -->
-<!--<script src="./js/app.js"></script>-->
+<script src="./js/app.js"></script>
 
-<script>
-/*var p=document.getElementById('affichePosition');
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    p.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  p.innerHTML = "Latitude: " + position.coords.latitude + " - Longitude: " + position.coords.longitude;
-}
-getLocation();
-*/
-</script>
 </body>
 </html>
