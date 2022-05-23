@@ -260,3 +260,10 @@ span.vente {
   from {background-color: red; color: white;}
   to {background-color: white;color:black;}
 }
+.watermark {
+	background-image: url('../images/logo.png');
+	background-blend-mode: exclusion;
+	background-attachment: fixed;
+	background-repeat: repeat;
+	background-color: #f4f3f1;
+}
