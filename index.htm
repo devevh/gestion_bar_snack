@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<title>Gestion snack bar &copy; DEVEVH 2022</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./css/w3.css">
-<link rel="stylesheet" href="./css/w3color.css">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="shortcut icon" href="./images/favicon.ico">
+	<title>Gestion snack bar &copy; DEVEVH</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./css/w3.css">
+	<link rel="stylesheet" href="./css/w3color.css">
+	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="shortcut icon" href="./images/favicon.ico">
+	<!-- fonctions spécifiques -->
+	<script src="./js/fonctions.js"></script>
 </head>
-<body class="w3-content w3-center" style="max-width:1200px" onload="majPage()">
+<body class="w3-content w3-center watermark" style="max-width:1200px" onload="construirePage()">
   <!-- Top menu on small screens -->
-<header class="w3-top w3-hide-large w3-white w3-xlarge">
+<header class="w3-top w3-hide-large watermark w3-xlarge ">
   <div class="w3-padding-24 w3-wide">Gestion de boissons<br>pour bar & snack</div>
 </header>
 
@@ -22,110 +24,55 @@
 
 <!-- Tuiles categories d'article -->
 <div class="w3-container " style="padding:16px" id="categories">
+<!--<i id='affichePosition' class="w3-margin-top"></i>-->
 	<div class="w3-row w3-center">
-		<div class="w3-col w3-border" >
-			<p class="w3-large"><b>SODAS</b></p>
-			<div class="w3-col s3" id="divcoca">
-				<a onclick="vendre(this.name)" name="coca" href="javascript:void(0);"><img class="w3-margin" id="imgcoca" height="100px" src="./images/coca-90x300.png" alt="coca"></a><br>
-				<span class="reel stock" id="reelcocastock"></span><br>
-				<span class="reel prix" id="reelcocaprix"></span>
-			</div>
-			<div class="w3-col s3" id="divorangina">
-				<a onclick="vendre(this.name)" name="orangina" href="javascript:void(0);"><img class="w3-margin" id="imgorangina" height="100px" src="./images/orangina-90x300.png" alt="orangina"></a><br>
-				<span class="reel stock" id="reeloranginastock"></span><br>
-				<span class="reel prix" id="reeloranginaprix"></span>
-			</div>
-			<div class="w3-col s3" id="divdjino">
-				<a onclick="vendre(this.name)" name="djino" href="javascript:void(0);"><img class="w3-margin" id="imgdjino" height="100px" src="./images/djino-front.png" alt="djino"></a><br>
-				<span class="reel stock" id="reeldjinostock"></span><br>
-				<span class="reel prix" id="reeldjinoprix"></span>
-			</div>
-			<div class="w3-col s3" id="divsprite">
-				<a onclick="vendre(this.name)" name="sprite" href="javascript:void(0);"><img class="w3-margin" id="imgsprite" height="100px" src="./images/sprite-90x300.png" alt="sprite"></a><br>
-				<span class="reel stock" id="reelspritestock"></span><br>
-				<span class="reel prix" id="reelspriteprix"></span>
-			</div>
+		<p class="w3-large"><b>SODAS</b></p>
+		<div class="w3-col w3-border" id="sodas">
 		</div>
-		<div class="w3-col w3-border" >
-			<p class="w3-large"><b>BIERES</b></p>
-			<div class="w3-col s3" id="divbeaufort">
-				<a onclick="vendre(this.name)" name="beaufort" href="javascript:void(0);"><img class="w3-margin" id="imgbeaufort" height="100px" src="./images/beaufort-79x300.png" alt="beaufort"></a><br>
-				<span class="reel stock" id="reelbeaufortstock"></span><br>
-				<span class="reel prix" id="reelbeaufortprix"></span>
-			</div>
-			<div class="w3-col s3" id="divregab">
-				<a onclick="vendre(this.name)" name="regab" href="javascript:void(0);"><img class="w3-margin" id="imgregab" height="100px" src="./images/REGAB-90x300.png" alt="regab"></a><br>
-				<span class="reel stock" id="reelregabstock"></span><br>
-				<span class="reel prix" id="reelregabprix"></span>
-			</div>
+		<p class="w3-large"><b>BIERES</b></p>
+		<div class="w3-col w3-border" id="bieres">
 		</div>
 	</div>
 </div>
-
 <!-- End page content -->
 
 <!--  fonctions d'administration  -->
 <!-- Stock -->
+<!--<button onclick="afficherSousMenu('stock')" class="w3-green w3-block w3-button">Gérer le stock</button>-->
+
+<div class="w3-container w3-hide" style="padding:16px" id="stock"></div>
+
 <button onclick="afficherSousMenu('stock')" class="w3-green w3-block w3-button">Gérer le stock</button>
-<div class="w3-container w3-hide" style="padding:16px" id="stock">
-	<div class="w3-row w3-center w3-border">
-		<div class="w3-col s3" ><a onclick="maj(this.name)" name="coca" href="javascript:void(0);"><img class="w3-margin" height="100px" src="./images/coca-90x300.png" alt="coca"></a></div>
-		<div class="w3-col s9" >
-			<label for="prixcoca">prix unitaire</label><input class="w3-input" type="number" id="prixcoca" maxlength="4" size="4">
-			<label for="stockcoca">stock</label><input class="w3-input" type="number" id="stockcoca" maxlength="4" size="4">
-		</div>
-	</div>
-	<div class="w3-row w3-center w3-border">
-		<div class="w3-col s3" ><a onclick="maj(this.name)" name="orangina" href="javascript:void(0);"><img class="w3-margin" height="100px" src="./images/orangina-90x300.png" alt="orangina"></a></div>
-		<div class="w3-col s9" >
-			<label for="prixorangina">prix unitaire</label><input class="w3-input" type="number" id="prixorangina" maxlength="4" size="4">
-			<label for="stockorangina">stock</label><input class="w3-input" type="number" id="stockorangina" maxlength="4" size="4">
-		</div>
-	</div>
-	<div class="w3-row w3-center w3-border">
-		<div class="w3-col s3" ><a onclick="maj(this.name)" name="sprite" href="javascript:void(0);"><img class="w3-margin " height="100px" src="./images/sprite-90x300.png" alt="sprite"></a></div>
-		<div class="w3-col s9" >
-			<label for="prixsprite">prix unitaire</label><input class="w3-input" type="number" id="prixsprite" maxlength="4" size="4">
-			<label for="stocksprite">stock</label><input class="w3-input" type="number" id="stocksprite" maxlength="4" size="4">
-		</div>
-	</div>
-	<div class="w3-row w3-center w3-border">
-		<div class="w3-col s3" ><a onclick="maj(this.name)" name="djino" href="javascript:void(0);"><img class="w3-margin" height="100px" src="./images/djino-front.png" alt="djino"></a></div>
-		<div class="w3-col s9" >
-			<label for="prixdjino">prix unitaire</label><input class="w3-input" type="number" id="prixdjino" maxlength="4" size="4">
-			<label for="stockdjino">stock</label><input class="w3-input" type="number" id="stockdjino" maxlength="4" size="4">
-		</div>
-	</div>
-	<div class="w3-row w3-center w3-border">
-		<div class="w3-col s3" ><a onclick="maj(this.name)" name="beaufort" href="javascript:void(0);"><img class="w3-margin" height="100px" src="./images/beaufort-79x300.png" alt="beaufort"></a></div>
-		<div class="w3-col s9" >
-			<label for="prixbeaufort">prix unitaire</label><input class="w3-input" type="number" id="prixbeaufort" maxlength="4" size="4">
-			<label for="stockbeaufort">stock</label><input class="w3-input" type="number" id="stockbeaufort" maxlength="4" size="4">
-		</div>
-	</div>
-	<div class="w3-row w3-center w3-border">
-		<div class="w3-col s3" ><a onclick="maj(this.name)" name="regab" href="javascript:void(0);"><img class="w3-margin" height="100px" src="./images/REGAB-90x300.png" alt="regab"></a></div>
-		<div class="w3-col s9" >
-			<label for="prixregab">prix unitaire</label><input class="w3-input" type="number" id="prixregab" maxlength="4" size="4">
-			<label for="stockregab">stock</label><input class="w3-input" type="number" id="stockregab" maxlength="4" size="4">
-		</div>
-	</div>
-</div>
 <!-- Fin Stock -->
-<hr>
+
 <!-- Afficher -->
-<button onclick="afficherSousMenu('demo')" class="w3-blue w3-block w3-button">Afficher le stock et les ventes</button>
+<button onclick="afficherSousMenu('demo')" class="w3-blue w3-block w3-button w3-margin-top">Afficher le stock et les ventes</button>
 <div id="demo" class="w3-container w3-hide"></div>
 <!-- Fin afficher -->
-<hr>
+<p class="w3-codespan w3-small">&copy; Tous droits réservés 2022 - <a href:"mailto:dev.vincenth@gmail.com">dev.vincenth@gmail.com</a></p>
 <!-- Remise à zéro -->
 <button onclick="initInventaire()" class="w3-red w3-block w3-button">/!\ Supprimer le stock et les ventes /!\</button>
 <!-- Fin Remise à zéro -->
 
-<!-- fonctions spécifiques -->
-<script src="./js/fonctions.js"></script>
-<!-- pwa -->
-<script src="./js/app.js"></script>
 
+<!-- pwa -->
+<!--<script src="./js/app.js"></script>-->
+
+<script>
+/*var p=document.getElementById('affichePosition');
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    p.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  p.innerHTML = "Latitude: " + position.coords.latitude + " - Longitude: " + position.coords.longitude;
+}
+getLocation();
+*/
+</script>
 </body>
 </html>
