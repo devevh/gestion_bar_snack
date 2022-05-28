@@ -267,3 +267,10 @@ span.vente {
 	background-repeat: repeat;
 	background-color: #f4f3f1;
 }
+
+.add-button {
+  position: fixed;
+  top: 1px;
+  left: 1px;
+  z-index: 1;
+}
