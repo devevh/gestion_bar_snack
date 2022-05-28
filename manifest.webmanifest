@@ -1,16 +1,16 @@
 {
     "name": "Gestion bar & snack",
     "short_name": "GESBAR",
-	"description": "Application de gestion des ventes et du stock de boissons pour bar, snack, buvette et restaurant",
-	"lang": "fr",
-	"dir": "ltr",
+    "description": "Application de gestion des ventes et du stock de boissons pour bar, snack, buvette et restaurant",
+    "lang": "fr",
+    "dir": "ltr",
     "theme_color": "#000000",
     "background_color": "#ffffff",
     "display": "fullscreen",
-	"orientation": "portrait",
+    "orientation": "portrait",
+    "start_url": "/gestion_bar_snack/index.htm",
     "scope": "/",
     "id": "/gestion_bar_snack",
-    "start_url": "/gestion_bar_snack/index.htm",
     "icons": [
 		{
 			"src": "images/logo.png",
