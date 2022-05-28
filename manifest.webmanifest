@@ -19,12 +19,12 @@
 		},
 		{
 			"src": "images/logo192blanc.png",
-			"sizes": "192x191",
+			"sizes": "191x192",
 			"type": "image/png"
 		},
 		{
 			"src": "images/logo512blanc.png",
-			"sizes": "512x509",
+			"sizes": "509x512",
 			"type": "image/png"
 		},
 		{

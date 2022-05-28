@@ -10,13 +10,6 @@
 	<link rel="shortcut icon" href="./images/favicon.ico">
 	<!-- fonctions spécifiques -->
 	<script src="./js/fonctions.js"></script>
-	<style>
-	.add-button {
-  position: fixed;
-  top: 1px;
-  left: 1px;
-}
-	</style>
 </head>
 <body class="w3-content w3-center watermark" style="max-width:1200px" onload="construirePage()">
   <!-- Top menu on small screens -->
@@ -24,63 +17,40 @@
   <div class="w3-padding-24 w3-wide">Gestion de boissons<br>pour bar & snack</div>
 </header>
 <!-- bouton d'installation -->
-<button class="w3-gray add-button "><u>!</u> Installer l'application <u>!</u></button>
+<button class="w3-orange add-button "><u>!</u> Installer l'application en mode déconnecté <u>!</u></button>
 <!-- !PAGE CONTENT! -->
 <div class="w3-main">
 <!-- Push down content on small screens -->
 <div class="w3-hide-large w3-margin-top-small" ></div>
 
 <!-- Tuiles categories d'article -->
-<div class="w3-container " style="padding:16px" id="categories">
+<div class="w3-container " style="padding:16px" >
 <!--<i id='affichePosition' class="w3-margin-top"></i>-->
-	<div class="w3-row w3-center">
-		<p class="w3-large"><b>SODAS</b></p>
-		<div class="w3-col w3-border" id="sodas">
-		</div>
-		<p class="w3-large"><b>BIERES</b></p>
-		<div class="w3-col w3-border" id="bieres">
-		</div>
+	<div class="w3-row w3-center" id="categories">
 	</div>
 </div>
 <!-- End page content -->
 
 <!--  fonctions d'administration  -->
 <!-- Stock -->
-<!--<button onclick="afficherSousMenu('stock')" class="w3-green w3-block w3-button">Gérer le stock</button>-->
-
 <div class="w3-container w3-hide" style="padding:16px" id="stock"></div>
-
 <button onclick="afficherSousMenu('stock')" class="w3-green w3-block w3-button">Gérer le stock</button>
 <!-- Fin Stock -->
 
 <!-- Afficher -->
-<button onclick="afficherSousMenu('demo')" class="w3-blue w3-block w3-button w3-margin-top">Afficher le stock et les ventes</button>
-<div id="demo" class="w3-container w3-hide"></div>
+<button onclick="afficherSousMenu('tableau')" class="w3-blue w3-block w3-button w3-margin-top">Afficher le stock et les ventes</button>
+<div id="tableau" class="w3-container w3-hide"></div>
 <!-- Fin afficher -->
+
+<!-- copyright -->
 <p class="w3-codespan w3-small">&copy; Tous droits réservés 2022 - <a href:"mailto:dev.vincenth@gmail.com">dev.vincenth@gmail.com</a></p>
+
 <!-- Remise à zéro -->
 <button onclick="initInventaire()" class="w3-red w3-block w3-button">/!\ Supprimer le stock et les ventes /!\</button>
 <!-- Fin Remise à zéro -->
 
-
 <!-- pwa -->
 <script src="./js/app.js"></script>
 
-<script>
-/*var p=document.getElementById('affichePosition');
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    p.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  p.innerHTML = "Latitude: " + position.coords.latitude + " - Longitude: " + position.coords.longitude;
-}
-getLocation();
-*/
-</script>
 </body>
 </html>
