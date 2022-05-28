@@ -116,6 +116,7 @@ function construirePage() {
 				elmtArticle.setAttribute("alt", article);
 				elmtArticle.setAttribute("src", "./images/"+article+".png");
 				elmtArticle.setAttribute("height", "100px");
+				elmtArticle.setAttribute("width", "30px");
 			//autres éléments de l'article : reour ligne et span 
 			creerElement("div"+article,"br","br"+article,"","");
 			creerElement("div"+article,"span","reel"+article+"stock","reel stock",obj.stock);
@@ -140,6 +141,7 @@ function construirePage() {
 				elmtArticle.setAttribute("alt", article);
 				elmtArticle.setAttribute("src", "./images/"+article+".png");
 				elmtArticle.setAttribute("height", "100px");
+				elmtArticle.setAttribute("width", "30px");
 			//div des input
 			creerElement("divRowStock"+article,"div","divInputStock"+article,"w3-col s9","");
 			creerElement("divInputStock"+article,"label","labelPrix"+article,"","prix unitaire");
