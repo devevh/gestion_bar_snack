@@ -1,6 +1,6 @@
 // enregistrement du service worker 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./gestion_bar_snack/js/sw.js').then(function(reg) {
+  navigator.serviceWorker.register('./js/sw.js').then(function(reg) {
 
     if(reg.installing) {
       console.log('Service worker installing');
