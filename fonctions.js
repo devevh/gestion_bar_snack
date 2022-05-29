@@ -83,7 +83,7 @@ function construirePage() {
 	creerElement("stock","i","i1","","toucher l'image de la boisson pour mettre à jour"); 
 	//
 	for (categorie of catalogue) {
-		creerElement("categories","div","titre"+categorie[0],"w3-row w3-large w3-margin-top","");
+		creerElement("categories","div","titre"+categorie[0],"w3-large w3-margin-top","");
 		creerElement("titre"+categorie[0],"b","","",categorie[0].toUpperCase());
 		creerElement("categories","div",categorie[0],"w3-row w3-border","");
 		for (i=1;i<categorie.length;i++) {
@@ -200,12 +200,12 @@ function readValue(quellediv) {
 		d.innerHTML = "Aucun inventaire disponible";
 	}
 	else {
-		tableau = "<table class='w3-table-all'><tr><th>Article</th><th class='w3-right-align'>Prix</th><th class='w3-right-align'>Stock</th><th class='w3-right-align'>Ventes</th><th class='w3-right-align'>Montant</th></tr>\n";
+		tableau = "<table class='w3-table-all'><tr><th>Article</th><th class='w3-right-align'>Stock</th><th class='w3-right-align'>Ventes</th><th class='w3-right-align'>Prix</th><th class='w3-right-align'>Montant</th></tr>\n";
 		for (i = 0; i < localStorage.length; i++) {
 			truc = localStorage.key(i);
 			texte = localStorage.getItem(truc);
 			obj = JSON.parse(texte);
-			tableau += "<tr><td>"+truc+"</td><td class='w3-right-align'>"+obj.prix+"</td><td class='w3-right-align'>"+obj.stock+"</td><td class='w3-right-align'>"+obj.vente+"</td><td class='w3-right-align'>"+obj.prix*obj.vente+"</td></tr>\n";
+			tableau += "<tr><td>"+truc+"</td><td class='w3-right-align'>"+obj.stock+"</td><td class='w3-right-align'>"+obj.vente+"</td><td class='w3-right-align'>"+obj.prix+"</td><td class='w3-right-align'>"+obj.prix*obj.vente+"</td></tr>\n";
 		}
 		tableau +="</table>";
 		d.innerHTML += tableau;

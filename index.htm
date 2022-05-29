@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="./css/w3color.css">
 	<link rel="manifest" href="manifest.webmanifest">
 	<link rel="shortcut icon" href="./images/favicon.ico">
+	<link rel="apple-touch-icon" href="./images/logo192blanc.png">
 	<!-- fonctions spécifiques -->
 	<script src="./fonctions.js"></script>
 </head>
@@ -20,23 +21,20 @@
   <div class="w3-padding-24 w3-wide">Gestion de boissons<br>pour bar & snack</div>
 </header>
 <!-- bouton d'installation -->
-<button class="btnInstall w3-orange w3-block w3-button w3-hide" id="btnInstall"><u>!</u> Installer l'application GESBAR en mode déconnecté <u>!</u></button>
+<button class="btnInstall w3-orange w3-block w3-button w3-hide w3-top" id="btnInstall"><u>!</u> Installer l'application GESBAR en mode déconnecté <u>!</u></button>
 <!-- !PAGE CONTENT! -->
 <div class="w3-main">
 <!-- Push down content on small screens -->
 <div class="w3-hide-large w3-margin-top-small" ></div>
 
 <!-- Tuiles categories d'article -->
-<div class="w3-container " style="padding:16px" >
-<!--<i id='affichePosition' class="w3-margin-top"></i>-->
-	<div class="w3-row w3-center" id="categories">
-	</div>
+<div class="w3-container w3-center w3-padding-16" id="categories">
 </div>
 <!-- End page content -->
 
 <!--  fonctions d'administration  -->
 <!-- Stock -->
-<div class="w3-container w3-hide" style="padding:16px" id="stock"></div>
+<div class="w3-container w3-hide w3-padding-16" id="stock"></div>
 <button onclick="afficherSousMenu('stock')" class="w3-green w3-block w3-button">Gérer le stock</button>
 <!-- Fin Stock -->
 
