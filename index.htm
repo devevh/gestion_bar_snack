@@ -17,15 +17,23 @@
 </head>
 <body class="w3-content w3-center watermark" style="max-width:1200px" onload="construirePage()">
   <!-- Top menu on small screens -->
-<header class="w3-top w3-hide-large watermark w3-xlarge ">
-  <div class="w3-padding-24 w3-wide">Gestion de boissons<br>pour bar & snack</div>
-</header>
+
 <!-- bouton d'installation -->
-<button class="btnInstall w3-orange w3-block w3-button w3-hide w3-top" id="btnInstall"><u>!</u> Installer l'application GESBAR en mode déconnecté <u>!</u></button>
+
+<nav class="w3-container w3-top" style="background-color: #f4f3f1">
+<ul class="w3-ul-menu-d w3-small">
+	<li class="btnInstall w3-orange w3-hide" id="btnInstall">Installer l'application GESBAR</li>
+	<li id="quitter">Quitter</li>
+	<li id="aide">Aide</li>
+</ul>
+</nav>
 <!-- !PAGE CONTENT! -->
 <div class="w3-main">
 <!-- Push down content on small screens -->
-<div class="w3-hide-large w3-margin-top-small" ></div>
+<!-- <div class="w3-hide-large w3-margin-top-small" ></div> -->
+<header class="w3-xlarge" >
+	<div class="w3-padding-24 w3-wide">Gestion de boissons<br>pour bar & snack</div>
+</header>
 
 <!-- Tuiles categories d'article -->
 <div class="w3-container w3-center w3-padding-16" id="categories">
@@ -50,8 +58,36 @@
 <button onclick="initInventaire()" class="w3-red w3-block w3-button">/!\ Supprimer le stock et les ventes /!\</button>
 <!-- Fin Remise à zéro -->
 
+<!-- modale -->
+<div id="modaleAide" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 ">
+		<header class="w3-container"> 
+			<h2>Aide</h2>
+			<span id="fermerAide" class="w3-button w3-display-topright w3-large"><b>×</b></span>
+		</header>
+		<!--  -->
+		<p>Texte d'information et d'aide</p>
+		<footer class="w3-container">
+			<p></p>
+		</footer>
+    </div>
+</div>
+
+
 <!-- pwa -->
 <script src="./app.js"></script>
+<script>
+//clic sur le bouton pour quitter l'application
+document.getElementById('quitter').addEventListener('click', function(){ window.close()});
+//clic sur se connecter pour afficher la modale du formulaire de connexion
+document.getElementById('aide').addEventListener('click',function(){
+	document.getElementById('modaleAide').style.display='block';
+});
+//clic sur le x pour fermer la modale de connexion
+document.getElementById('fermerAide').addEventListener('click',function(){
+	document.getElementById('modaleAide').style.display='none';
+});
+</script>
 
 </body>
 </html>

@@ -9,6 +9,7 @@ const init = '{"stock":0,"vente":0,"prix":0}';
 /**************************************************************************************/
 //fonctions appelées
 /**************************************************************************************/
+
 function recharge() {
 	location.reload();
 }
@@ -266,6 +267,7 @@ function maj(truc) {
 	//mettre à jour le tableau de suivi du stock et des ventes
 	readValue("tableau");
 }
+
 
 //************************************************************************
 //usage futur : geolocalisation
