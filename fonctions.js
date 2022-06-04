@@ -261,9 +261,9 @@ function vendre(truc) {
 function maj(truc) {
 	//met à jour le stock, le prix unitaire et remet à 0 le nombre de vente
 	// récupérer le prix saisi
-	var prix = document.getElementById("prix"+truc).value;
+	var prix = Math.floor(document.getElementById("prix"+truc).value);
 	// récupérer le stock saisi
-	var stock = document.getElementById("stock"+truc).value;
+	var stock = Math.floor(document.getElementById("stock"+truc).value);
 	if ((stock === 0) || (prix === 0)) {stock=0; prix=0};
 	// Storing data
 	var article = {"stock":stock,"vente":0,"prix":prix};
