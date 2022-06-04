@@ -155,6 +155,9 @@ function construirePage() {
 				elmtArticle.setAttribute("type", "number");
 				elmtArticle.setAttribute("size", 4);
 				elmtArticle.setAttribute("maxlength", 4);
+				elmtArticle.setAttribute("min", 1);
+				elmtArticle.setAttribute("max", 100000);
+				elmtArticle.setAttribute("step", 1);
 				if (obj.prix > 0) elmtArticle.setAttribute("value", obj.prix);
 			creerElement("divInputStock"+article,"label","labelStock"+article,"","stock");
 			//définir les attributs spécifiques
@@ -166,6 +169,9 @@ function construirePage() {
 				elmtArticle.setAttribute("type", "number");
 				elmtArticle.setAttribute("size", 4);
 				elmtArticle.setAttribute("maxlength", 4);
+				elmtArticle.setAttribute("min", 1);
+				elmtArticle.setAttribute("max", 1000);
+				elmtArticle.setAttribute("step", 1);
 				if (obj.stock > 0) elmtArticle.setAttribute("value", obj.stock);
 		}
 	}
