@@ -59,7 +59,7 @@
 <!-- Fin Remise à zéro -->
 
 <!-- historique des inventaires -->
-<select id="listeInventaires" class="w3-input" onchange="readHisto(this.value)">
+<select id="listeInventaires" class="w3-input" onclick="readHisto(this.value)" onchange="readHisto(this.value)">
 <option value="--">Historique des inventaires</option>
 </select>
 
@@ -122,6 +122,10 @@ document.getElementById('fermerAide').addEventListener('click',function(){
 document.getElementById('fermerHisto').addEventListener('click',function(){
 	document.getElementById('modaleHisto').style.display='none';
 });
+//clic pour afficher l'historique
+//document.getElementById('listeInventaires').addEventListener('click',readHisto(this.value));
+//clic pour afficher l'historique
+//document.getElementById('listeInventaires').addEventListener('change',readHisto(this.value));
 </script>
 
 </body>

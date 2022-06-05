@@ -250,7 +250,7 @@ function readHisto(quelleDate) {
 			obj.forEach(ecrireLigne);
 			tableauHisto +="</table>";
 			d.innerHTML += tableauHisto;
-			document.getElementById('dateHisto').innerHTML=quelleDate;
+			document.getElementById('dateHisto').innerHTML=quelleDate.substr(0,10)+' à '+quelleDate.substr(11,8);
 			document.getElementById('modaleHisto').style.display='block';
 		}
 	}
