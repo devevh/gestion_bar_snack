@@ -75,7 +75,7 @@ function construirePage() {
 	var stockage;
 	//
 	//construire la page en fonction du catalogue
-	//créer le bouton
+	//créer le bouton en haut du formulaire
 	creerElement("stock","button","boutonStock","w3-green w3-block w3-button","Gérer le stock");
 	//définir les attributs spécifiques
 	elmtArticle=document.getElementById("boutonStock");
@@ -179,7 +179,17 @@ function construirePage() {
 	//gestion de l'affichage
 	for (i = 0; i < localStorage.length; i++) {
 		truc = localStorage.key(i);
-		gestionAffichage(truc);
+		//test de la clé pour ne pas lire les histo
+		if ((truc.startsWith('20'))) {
+			//histo, on ajoute une option à la liste déroulante
+			creerElement("listeInventaires","option","histo"+truc,"",truc);
+			//définir les attributs spécifiques
+			elmtArticle=document.getElementById("histo"+truc);
+				elmtArticle.setAttribute("onclick", "readHisto(this.value)");
+		}
+		else {
+			gestionAffichage(truc);
+		}
 	}
 	//alimentation du tableau
 	readValue("tableau");
@@ -187,16 +197,62 @@ function construirePage() {
 
 //******************************************************************************************************
 function initInventaire() {
-// remise à zero du stock et des ventes
+// remise à zero du stock et des ventes avec historisation
+	let cle, texte, article;
+	const histo=[];
+	//lire la réponse de l'utilisateur à la demande de confirmation
 	let reponse=confirm("Voulez-vous tout remettre à zéro ?");
-	var article="";
 	if (reponse) {
-	//si confirmé alors on efface tout et on recharge la page qui sera reconstruite
-		localStorage.clear();
+	//si confirmé alors 
+		//calcul date d'historisation
+		let d = new Date();
+		let dateHisto = d.toJSON(d);
+		//parcourir le stockage local
+		for (i = 0; i < localStorage.length; i++) {
+			cle = localStorage.key(i);
+			//test de la clé pour ne pas lire les histo
+			if (!(cle.startsWith('20'))) {
+				texte= localStorage.getItem(cle);
+				article=JSON.parse(texte);//transformer la string des données en objet 
+				obj={"article":cle,"stock":article.stock,"vente":article.vente,"prix":article.prix}; //pour construire un nouvel objet
+				//histo[i]=obj; //stocker cet objet dans le tableau d'historisation
+				l=histo.push(obj); //stocker cet objet dans le tableau d'historisation
+				//on met tous les histos à zéro
+				localStorage.setItem(cle, init);
+			}
+		}
+		//on historise avec le timestamp
+		localStorage.setItem(dateHisto, JSON.stringify(histo));
 	}
+	//on recharge la page qui sera reconstruite
 	recharge();
 }
 
+//******************************************************************************************************
+let tableauHisto;
+function ecrireLigne(valeur) {
+	tableauHisto+="<tr><td>"+valeur.article+"</td><td class='w3-right-align'>"+valeur.stock+"</td><td class='w3-right-align'>"+valeur.vente+"</td><td class='w3-right-align'>"+valeur.prix+"</td><td class='w3-right-align'>"+valeur.prix*valeur.vente+"</td></tr>\n";
+}
+
+function readHisto(quelleDate) {
+	//mise à jour du tableau des ventes
+	let d = document.getElementById("tableauHisto");
+	let texte, obj;
+	d.innerHTML = "";
+	if (localStorage.length == 0) {
+		d.innerHTML = "Aucun inventaire disponible";
+	}
+	else {
+		tableauHisto = "<table class='w3-table-all'><tr><th>Article</th><th class='w3-right-align'>Stock</th><th class='w3-right-align'>Ventes</th><th class='w3-right-align'>Prix</th><th class='w3-right-align'>Montant</th></tr>\n";
+		texte = localStorage.getItem(quelleDate); //texte reçoit les n postes du JSON correspondant à la clé quelleDate
+		obj = JSON.parse(texte);
+		obj.forEach(ecrireLigne);
+		tableauHisto +="</table>";
+		d.innerHTML += tableauHisto;
+		document.getElementById('dateHisto').innerHTML=quelleDate;
+		document.getElementById('modaleHisto').style.display='block';
+	}
+}
 //******************************************************************************************************
 function readValue(quellediv) {
 	//mise à jour du tableau des ventes
@@ -210,9 +266,12 @@ function readValue(quellediv) {
 		tableau = "<table class='w3-table-all'><tr><th>Article</th><th class='w3-right-align'>Stock</th><th class='w3-right-align'>Ventes</th><th class='w3-right-align'>Prix</th><th class='w3-right-align'>Montant</th></tr>\n";
 		for (i = 0; i < localStorage.length; i++) {
 			truc = localStorage.key(i);
-			texte = localStorage.getItem(truc);
-			obj = JSON.parse(texte);
-			tableau += "<tr><td>"+truc+"</td><td class='w3-right-align'>"+obj.stock+"</td><td class='w3-right-align'>"+obj.vente+"</td><td class='w3-right-align'>"+obj.prix+"</td><td class='w3-right-align'>"+obj.prix*obj.vente+"</td></tr>\n";
+			//test de la clé pour ne pas lire les histo
+			if (!(truc.startsWith('20'))) {
+				texte = localStorage.getItem(truc);
+				obj = JSON.parse(texte);
+				tableau += "<tr><td>"+truc+"</td><td class='w3-right-align'>"+obj.stock+"</td><td class='w3-right-align'>"+obj.vente+"</td><td class='w3-right-align'>"+obj.prix+"</td><td class='w3-right-align'>"+obj.prix*obj.vente+"</td></tr>\n";
+			}
 		}
 		tableau +="</table>";
 		d.innerHTML += tableau;

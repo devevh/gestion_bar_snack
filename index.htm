@@ -58,7 +58,14 @@
 <button onclick="initInventaire()" class="w3-red w3-block w3-button">/!\ Supprimer le stock et les ventes /!\</button>
 <!-- Fin Remise à zéro -->
 
-<!-- modale -->
+<!-- historique des inventaires -->
+<select id="listeInventaires" class="w3-input">
+<option value="--">Historique des inventaires</option>
+</select>
+
+<!-- Fin historique des inventaires -->
+
+<!-- modales -->
 <div id="modaleAide" class="w3-modal">
     <div class="w3-modal-content w3-card-4 ">
 		<header class="w3-container"> 
@@ -85,19 +92,35 @@
     </div>
 </div>
 
+<div id="modaleHisto" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 ">
+		<header class="w3-container"> 
+			<h4>Inventaire du <span id="dateHisto"></span></h4>
+			<span id="fermerHisto" class="w3-button w3-display-topright w3-large"><b>×</b></span>
+		</header>
+		<div id="tableauHisto" class="w3-container"></div>
+		<!--  -->
+		
+    </div>
+</div>
+
 
 <!-- pwa -->
 <script src="./app.js"></script>
 <script>
 //clic sur le bouton pour quitter l'application
 document.getElementById('quitter').addEventListener('click', function(){ window.close()});
-//clic sur se connecter pour afficher la modale du formulaire de connexion
+//clic sur aide pour afficher la modale d'aide
 document.getElementById('aide').addEventListener('click',function(){
 	document.getElementById('modaleAide').style.display='block';
 });
-//clic sur le x pour fermer la modale de connexion
+//clic sur le x pour fermer la modale de aide
 document.getElementById('fermerAide').addEventListener('click',function(){
 	document.getElementById('modaleAide').style.display='none';
+});
+//clic sur le x pour fermer la modale de Histo
+document.getElementById('fermerHisto').addEventListener('click',function(){
+	document.getElementById('modaleHisto').style.display='none';
 });
 </script>
 
