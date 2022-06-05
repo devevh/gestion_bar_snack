@@ -185,7 +185,7 @@ function construirePage() {
 			creerElement("listeInventaires","option","histo"+truc,"",truc);
 			//définir les attributs spécifiques
 			elmtArticle=document.getElementById("histo"+truc);
-				elmtArticle.setAttribute("onclick", "readHisto(this.value)");
+				elmtArticle.setAttribute("value", truc);
 		}
 		else {
 			gestionAffichage(truc);
@@ -238,19 +238,21 @@ function readHisto(quelleDate) {
 	//mise à jour du tableau des ventes
 	let d = document.getElementById("tableauHisto");
 	let texte, obj;
-	d.innerHTML = "";
-	if (localStorage.length == 0) {
-		d.innerHTML = "Aucun inventaire disponible";
-	}
-	else {
-		tableauHisto = "<table class='w3-table-all'><tr><th>Article</th><th class='w3-right-align'>Stock</th><th class='w3-right-align'>Ventes</th><th class='w3-right-align'>Prix</th><th class='w3-right-align'>Montant</th></tr>\n";
-		texte = localStorage.getItem(quelleDate); //texte reçoit les n postes du JSON correspondant à la clé quelleDate
-		obj = JSON.parse(texte);
-		obj.forEach(ecrireLigne);
-		tableauHisto +="</table>";
-		d.innerHTML += tableauHisto;
-		document.getElementById('dateHisto').innerHTML=quelleDate;
-		document.getElementById('modaleHisto').style.display='block';
+	if (quelleDate != "--") {
+		d.innerHTML = "";
+		if (localStorage.length == 0) {
+			d.innerHTML = "Aucun inventaire disponible";
+		}
+		else {
+			tableauHisto = "<table class='w3-table-all'><tr><th>Article</th><th class='w3-right-align'>Stock</th><th class='w3-right-align'>Ventes</th><th class='w3-right-align'>Prix</th><th class='w3-right-align'>Montant</th></tr>\n";
+			texte = localStorage.getItem(quelleDate); //texte reçoit les n postes du JSON correspondant à la clé quelleDate
+			obj = JSON.parse(texte);
+			obj.forEach(ecrireLigne);
+			tableauHisto +="</table>";
+			d.innerHTML += tableauHisto;
+			document.getElementById('dateHisto').innerHTML=quelleDate;
+			document.getElementById('modaleHisto').style.display='block';
+		}
 	}
 }
 //******************************************************************************************************
