@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+<title>Test document.Referrer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="inscrire un hash des informations des clients payeurs">
+<meta name="robots" content="noindex, nofollow">
+<link rel="shortcut icon" href="./images/favicon.ico">
+<link rel="apple-touch-icon" href="./images/icones/logo.png">
+<link rel="stylesheet" href="./css/w3.css">
+<link rel="stylesheet" href="./css/fontAwesome/css/all.css" type="text/css">
+</head>
+<body class="w3-center" onload="document.getElementById('infoconnexion').innerHTML = document.referrer;">
+<!-- Header -->
+<header class="w3-container">
+	<div>
+	</div>
+</header>
+<!-- Main -->
+<div id="main">
+	<div id="content" class="w3-container">
+		<header >
+        </header>
+        <span id="infoconnexion"></span>
+	</div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container ">  
+	<div>
+	</div>
+</footer>
+<script>
+
+document.getElementById('infoconnexion').innerHTML = document.referrer;
+
+</script>
+</body>
+</html>
