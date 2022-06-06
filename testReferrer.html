@@ -14,6 +14,12 @@
         	<p>Le referrer de cette page est <span id="infoconnexion"></span></p>
 	</div>
 </div>
-<script>document.getElementById('infoconnexion').innerHTML = document.referrer;</script>
+<script>
+r = document.referrer;
+if (r != "http://dev.e-trajet.biz/gestion-bar-snack/inscription.html") {
+	alert("origine non autorisée, retour à la page précédente");
+	history.back();
+}
+</script>
 </body>
 </html>
