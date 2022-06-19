@@ -1,14 +1,16 @@
 /**************************************************************************************/
-//constantes
-/**************************************************************************************/
-const sodas=['sodas','coca','orangina','sprite','djino','vinocola'];
-const bieres=['bieres','regab','beaufort','33export','castelbeer','1664','heineken','corona'];
-const catalogue = [sodas,bieres];
-const init = '{"stock":0,"vente":0,"prix":0}';
-
-/**************************************************************************************/
 //fonctions appelées
 /**************************************************************************************/
+function stringToHash(string) {
+	var hash = 0;
+	if (string.length == 0) return hash;
+	for (i = 0; i < string.length; i++) {
+		char = string.charCodeAt(i);
+		hash = ((hash << 5) - hash) + char;
+		hash = hash & hash;
+	}
+	return hash;
+}
 
 function recharge() {
 	location.reload();
@@ -247,9 +249,9 @@ function readHisto(quelleDate) {
 			tableauHisto = "<table class='w3-table-all'><tr><th>Article</th><th class='w3-right-align'>Stock</th><th class='w3-right-align'>Ventes</th><th class='w3-right-align'>Prix</th><th class='w3-right-align'>Montant</th></tr>\n";
 			texte = localStorage.getItem(quelleDate); //texte reçoit les n postes du JSON correspondant à la clé quelleDate
 			obj = JSON.parse(texte);
-			obj.forEach(ecrireLigne);
+			obj.forEach(ecrireLigne); //itération sur tous les postes existants de l'objet
 			tableauHisto +="</table>";
-			d.innerHTML += tableauHisto;
+			d.innerHTML = tableauHisto; //ecriture du tableau resultat dans la div
 			document.getElementById('dateHisto').innerHTML=quelleDate.substr(0,10)+' à '+quelleDate.substr(11,8);
 			document.getElementById('modaleHisto').style.display='block';
 		}
