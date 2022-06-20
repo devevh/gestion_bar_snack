@@ -10,6 +10,8 @@
 	Installable, elle fonctionne même sans accès au réseau internet, connexion obligatoire uniquement pour l'installation.
 	Cette application simple, rapide, conviviale et intuitive permet d'éviter les erreurs de saisie et de calcul, les oublis.
 	Elle est personnalisable sur demande, pour changer les couleurs ou afficher un logo ou bien ajuster le catalogue des produits.
+	Cette démo est une brique d'un système complet, global, gérable en ligne pour gérer les achats, la paie, la comptabilité.
+	Scalable pour un établissement ou une chaine internationale, pour tous les domaines d'activité : hotel, restaurant, activités sportives.
 	Contact par mail : dev.vincenth@gmail.com, par whatsApp : +33 7 60 31 72 62">
 	<meta name="robots" content="noindex, nofollow">
 	<link rel="stylesheet" href="./css/w3.css">
@@ -24,7 +26,7 @@
 		let r = stringToHash(document.referrer);
 		if (r != -136531519) {
 			alert("Accès non autorisé, retour à la page précédente");
-			history.back();
+			window.location.assign("https://google.fr");
 		}
 	</script>
 	<noscript>
@@ -96,12 +98,12 @@
 		<h4 class="w3-light-grey">Enregistrer une vente</h4>
 		<p>Pour enregistrer la vente d'un produit il suffit de cliquer sur l'image du produit.</p>
 		<h4 class="w3-blue">Consulter les ventes</h4>
-		<p>Pour consulter l'historique des ventes il faut cliquer sur le bouton bleu "Afficher le stock et les ventes".<br>
+		<p>Pour consulter l'état des ventes il faut cliquer sur le bouton bleu "Afficher le stock et les ventes".<br>
 		Pour masquer le tableau des ventes il faut cliquer à nouveau sur le bouton bleu.</p>
 		<h4 class="w3-red">Supprimer le stock et les ventes</h4>
 		<p>Pour supprimer le stock et les ventes il faut cliquer sur le bouton rouge.<br>
 		<b>Attention, il ne sera pas possible de récupérer les informations.</b><br>
-		Pour conserver l'historique il suffit de faire une copie d'écran du tableau.</p>
+		Lors de la suppression une archive horodatée est produite et devient disponible à partir de la liste déroulante en bas de page.</p>
 		<footer class="w3-container">
 			<p class="w3-codespan w3-small">&copy; Tous droits réservés 2022 - <a href:"mailto:dev.vincenth@gmail.com">dev.vincenth@gmail.com</a></p>
 		</footer>
